@@ -122,13 +122,20 @@ class Window(QMainWindow, Ui_Calc):
             elif self.operationType == Operation.Multiplication.value:
                 self.result = Decimal(self.result) * Decimal(self.resultLabel.text())
             elif self.operationType == Operation.Division.value:
-                self.result = Decimal(self.result) / Decimal(self.resultLabel.text())
+                try:
+                    self.result = Decimal(self.result) / Decimal(self.resultLabel.text())
+                except decimal.DivisionByZero as ex:
+                    self.result = None
+                    self.resultLabel.setText("")
+                    self.operationLabel.setText("")
+                    self.operationType = None
             elif self.operationType == Operation.Mode.value:
                 self.result = Decimal(self.result) % Decimal(self.resultLabel.text())
 
             if self.operationType is not None:
                 self.operationLabel.setText(self.operationLabel.text() + self.resultLabel.text())
-            self.resultLabel.setText(str(int(self.result) if self.result % 1 == 0 else self.result))
+            if self.result is not None:
+                self.resultLabel.setText(str(int(self.result) if self.result % 1 == 0 else self.result))
             self.status = 1
             self.operationType = None
 
