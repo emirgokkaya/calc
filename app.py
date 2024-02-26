@@ -6,11 +6,12 @@ from form import Ui_Calc
 from NumberEnum import Number, Operation
 from decimal import Decimal
 from PyQt5.QtCore import Qt
+from resources import *
 
 class Window(QMainWindow, Ui_Calc):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowIcon(QIcon('icon.png'))
+        self.setWindowIcon(QIcon(':/icon.ico'))
         self.setupUi(self)
         self.setFixedWidth(211)
         self.setFixedHeight(329)
