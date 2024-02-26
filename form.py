@@ -92,7 +92,7 @@ class Ui_Calc(object):
 
     def retranslateUi(self, Calc):
         _translate = QtCore.QCoreApplication.translate
-        Calc.setWindowTitle(_translate("Calc", "Form"))
+        Calc.setWindowTitle(_translate("Calc", "Calc"))
         self.modeButton.setText(_translate("Calc", "%"))
         self.lastOperationDelButton.setText(_translate("Calc", "CE"))
         self.operationDelButton.setText(_translate("Calc", "C"))
